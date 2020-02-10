@@ -36,10 +36,9 @@ module.exports = {
       test: /\.scss$/,
       use: [
         'style-loader',
-        MiniCssExtractPlugin.loader,
         {
           loader: 'css-loader',
-          options: { sourceMap: true },
+          options: { sourceMap: true, modules: true },
         }, {
           loader: 'postcss-loader',
           options: { sourceMap: true, config: { path: './src/modules/postcss.config.modules' } },
@@ -52,10 +51,12 @@ module.exports = {
       test: /\.css$/,
       use: [
         'style-loader',
-        MiniCssExtractPlugin.loader,
         {
           loader: 'css-loader',
-          options: { sourceMap: true },
+          options: {
+            sourceMap: true,
+            modules: true,
+          },
         }, {
           loader: 'postcss-loader',
           options: { sourceMap: true, config: { path: './src/modules/postcss.config.modules' } },
@@ -74,7 +75,7 @@ module.exports = {
     }),
     new CopyWebpackPlugin([
       {
-        from: `${PATHS.src}/assets/img`, to: `${PATHS.assets}img`,
+        from: `${PATHS.src}/modules/**/**/img`, to: `${PATHS.assets}img`,
       },
     ]),
   ],
