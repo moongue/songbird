@@ -42,7 +42,7 @@ module.exports = {
           options: { sourceMap: true },
         }, {
           loader: 'postcss-loader',
-          options: { sourceMap: true, config: { path: './src/js/postcss.config.js' } },
+          options: { sourceMap: true, config: { path: './src/modules/postcss.config.modules' } },
         }, {
           loader: 'sass-loader',
           options: { sourceMap: true },
@@ -58,7 +58,7 @@ module.exports = {
           options: { sourceMap: true },
         }, {
           loader: 'postcss-loader',
-          options: { sourceMap: true, config: { path: './src/js/postcss.config.js' } },
+          options: { sourceMap: true, config: { path: './src/modules/postcss.config.modules' } },
         },
       ],
     }],

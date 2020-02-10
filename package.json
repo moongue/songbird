@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "webpack-dev-server --open --config webpack.dev.conf.js",
     "build": "webpack --config webpack.build.conf.js",
-    "lint": "eslint ./src/js/*.js",
-    "lint-fix": "eslint ./src/js/*.js --fix",
+    "lint": "eslint src/modules/*.js",
+    "lint-fix": "eslint src/modules/*.js --fix",
     "test": "jest"
   },
   "browserslist": [
@@ -35,6 +35,7 @@
     "eslint": "^6.7.2",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-react": "^7.18.3",
     "file-loader": "^4.2.0",
     "html-webpack-plugin": "^3.2.0",
     "jest": "^24.9.0",
@@ -43,6 +44,7 @@
     "node-sass": "^4.13.1",
     "path": "^0.12.7",
     "postcss-loader": "^3.0.0",
+    "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "regenerator-runtime": "^0.13.3",
