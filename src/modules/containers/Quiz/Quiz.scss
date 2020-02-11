@@ -12,3 +12,13 @@
   border-radius: 8px;
   background: #303030;
 }
+
+@media only screen and (max-width : 767px) {
+  .Row {
+    flex-direction: column;
+  }
+  .Inf {
+    margin-left: 0;
+    margin-top: 5px;
+  }
+}
