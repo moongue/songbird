@@ -7,6 +7,7 @@ import VariantsStyles from '../../components/Variants/Variants.scss';
 import Styles from './Quiz.scss';
 import NavQuizStyles from '../../components/NavQuiz/NavQuiz.scss';
 import ButtonStep from '../../components/ButtonStep/ButtonStep';
+import Congratulation from '../../components/Congratulation/Congratulation';
 
 class Quiz extends Component {
   state = {
@@ -33,7 +34,7 @@ class Quiz extends Component {
 
   variantsHandler = (index) => {
     const { target } = event;
-    const { sumPoints, indexAnswers, buttonNextStep, step } = this.state;
+    const { sumPoints, indexAnswers, buttonNextStep } = this.state;
     let { points } = this.state;
     if (!indexAnswers.has(index)) {
       points = points === 0 ? 0 : --points;
@@ -45,10 +46,7 @@ class Quiz extends Component {
           truthAnswer: true,
           buttonNextStep: true,
         });
-        this.props.updateData({
-          points: sumPoints + points,
-          step
-        });
+        this.props.updateData(sumPoints + points);
       }
       if (index === this.state.idBirdOnQuestion) {
         target.classList.add(`${VariantsStyles.Variants__item_correct}`);
@@ -76,11 +74,33 @@ class Quiz extends Component {
     });
   };
 
+  restartHandler = () => {
+    new Promise((resolve) => {
+      resolve(this.setState({
+        points: 6,
+        showInf: false,
+        truthAnswer: false,
+        sumPoints: 0,
+        step: 0,
+        buttonNextStep: false,
+        indexAnswers: new Set(),
+      }));
+    }).then(() => this.props.updateData(this.state.sumPoints));
+  };
+
   render() {
     const {
-      showInf, chooseBird, truthAnswer, step, idBirdOnQuestion, buttonNextStep
+      showInf, chooseBird, truthAnswer, step, idBirdOnQuestion, buttonNextStep, sumPoints
     } = this.state;
     setTimeout(() => this.changeCurrentStep(), 0);
+    if (step === 6) {
+      return (
+        <>
+          <Congratulation sumPoints={sumPoints} restart={this.restartHandler}/>
+          {sumPoints === 30 ? <h1>Hello!</h1> : null}
+        </>
+      );
+    }
     return [
       truthAnswer
         ? <Question

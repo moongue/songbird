@@ -8,20 +8,16 @@ import './App.scss';
 class App extends Component {
   state = {
     sumPoints: 0,
-    step: 0,
   };
 
-  updateValue = ({ points, step }) => {
-    this.setState({
-      sumPoints: points,
-      step,
-    });
+  updateValue = (value) => {
+    this.setState({ sumPoints: value });
   };
 
   render() {
     return (
       <Layout>
-        <Header points={this.state.sumPoints} steps={this.state.step}/>
+        <Header points={this.state.sumPoints} />
         <Quiz updateData={this.updateValue}/>
       </Layout>
     );

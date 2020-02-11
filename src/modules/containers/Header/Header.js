@@ -43,12 +43,10 @@ class Header extends Component {
 
 Header.defaulProps = {
   points: 0,
-  step: 0
 };
 
 Header.propTypes = {
   points: PropTypes.number,
-  step: PropTypes.number,
 };
 
 export default Header;
