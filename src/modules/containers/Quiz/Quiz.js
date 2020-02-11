@@ -8,9 +8,12 @@ import Styles from './Quiz.scss';
 import NavQuizStyles from '../../components/NavQuiz/NavQuiz.scss';
 import ButtonStep from '../../components/ButtonStep/ButtonStep';
 import Congratulation from '../../components/Congratulation/Congratulation';
+import Awesome from '../../components/Awesome/Awesome';
+import AwesomeStyles from '../../components/Awesome/Awesome.scss'
 
 class Quiz extends Component {
   state = {
+    awesome: false,
     truthAnswer: false,
     showInf: false,
     chooseBird: null,
@@ -63,8 +66,12 @@ class Quiz extends Component {
   };
 
   nextStepHandler = () => {
-    let { step } = this.state;
+    let { step, awesome } = this.state;
+    if (this.state.sumPoints === 30) {
+      awesome = true;
+    }
     this.setState({
+      awesome,
       points: 6,
       showInf: false,
       truthAnswer: false,
@@ -88,16 +95,25 @@ class Quiz extends Component {
     }).then(() => this.props.updateData(this.state.sumPoints));
   };
 
+  closeAwesome = () => {
+    if (event.target.classList.contains(`${AwesomeStyles.Blocker}`)) {
+      this.setState({
+        awesome: false,
+      });
+    }
+  };
+
   render() {
     const {
-      showInf, chooseBird, truthAnswer, step, idBirdOnQuestion, buttonNextStep, sumPoints
+      showInf, chooseBird, truthAnswer, step, idBirdOnQuestion, buttonNextStep, sumPoints, awesome
     } = this.state;
+    console.log(idBirdOnQuestion);
     setTimeout(() => this.changeCurrentStep(), 0);
     if (step === 6) {
       return (
         <>
           <Congratulation sumPoints={sumPoints} restart={this.restartHandler}/>
-          {sumPoints === 30 ? <h1>Hello!</h1> : null}
+          {awesome ? <Awesome handlerClose={this.closeAwesome} /> : null}
         </>
       );
     }
