@@ -1,0 +1,14 @@
+.ButtonStep {
+  font-size: 18px;
+  color: #fff;
+  width: 100%;
+  background: #008966;
+  border: 1px solid #161616;
+  border-radius: 8px;
+  padding: 10px 0;
+  cursor: pointer;
+  &:disabled {
+    background: #303030;
+    cursor: not-allowed;
+  }
+}

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Style from './Header.scss';
 import ScorePoints from '../../components/Score/ScorePoints';
 import NavQuiz from '../../components/NavQuiz/NavQuiz';
@@ -8,7 +9,6 @@ const img = require('./img/logo.svg');
 
 class Header extends Component {
   state = {
-    points: 0,
     navQuiz: [
       { title: 'Разминка', active: true },
       { title: 'Воробьиные', active: false },
@@ -26,18 +26,29 @@ class Header extends Component {
           <a className={Style.Logo} href={'#'}>
             <img src={img} alt="Logo"/>
           </a>
-          <ScorePoints points={this.state.points}/>
+          <ScorePoints points={this.props.points}/>
         </div>
         <NavQuiz>
           {this.state.navQuiz.map((li) => (
             <li key={li.title}
-                className={li.active ? (`${NavQuizStyles.NavQuiz__item} ${NavQuizStyles.NavQuiz__item_active}`
-                ) : NavQuizStyles.NavQuiz__item}><a href={'#'}>{li.title}</a></li>
+                className={li.active
+                  ? (`${NavQuizStyles.NavQuiz__item} ${NavQuizStyles.NavQuiz__item_active}`)
+                  : NavQuizStyles.NavQuiz__item}>{li.title}</li>
           ))}
         </NavQuiz>
       </header>
     );
   }
 }
+
+Header.defaulProps = {
+  points: 0,
+  step: 0
+};
+
+Header.propTypes = {
+  points: PropTypes.number,
+  step: PropTypes.number,
+};
 
 export default Header;

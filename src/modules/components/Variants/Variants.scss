@@ -1,0 +1,40 @@
+.Variants {
+  display: flex;
+  flex-direction: column;
+  background: #303030;
+  border-radius: 8px;
+  padding-left: 0;
+  flex-basis: 50%;
+  &__item {
+    list-style: none;
+    font-size: 16px;
+    color: #fff;
+    padding: 15px 15px 15px 40px;
+    border-bottom: 1px solid #161616;
+    position: relative;
+    cursor: pointer;
+    &:before {
+      content: '';
+      background: #6b6b6b;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      position: absolute;
+      left: 15px;
+      top: calc((100% - 6px) / 2);
+    }
+    &:last-child {
+      border: none;
+    }
+    &_correct {
+      &:before {
+        background: #7ee32d;
+      }
+    }
+    &_uncorrect {
+      &:before {
+        background: #e3433f;
+      }
+    }
+  }
+}

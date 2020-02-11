@@ -1,11 +1,16 @@
 .Question {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   align-items: center;
   padding: 20px;
   background: #303030;
   border-radius: 8px;
+  &_small {
+    padding: 10px;
+  }
   &__img {
+    display: flex;
     width: 100%;
     max-width: 200px;
     height: 155px;
@@ -20,6 +25,18 @@
     color: #fff;
     padding-bottom: 15px;
     border-bottom: 1px solid #444;
+    &_small {
+      margin-top: 0;
+      margin-bottom: 0;
+      font-size: 20px;
+      padding-bottom: 10px;
+    }
+  }
+  &__kind {
+    padding: 0;
+  }
+  &__description {
+
   }
   &__audio {
     width: 100%;
