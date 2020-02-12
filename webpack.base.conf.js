@@ -48,6 +48,10 @@ module.exports = {
         },
       ],
     }, {
+      test: /\.mp3$/,
+      include: PATHS.src,
+      loader: 'file-loader'
+    }, {
       test: /\.css$/,
       use: [
         'style-loader',
@@ -76,6 +80,8 @@ module.exports = {
     new CopyWebpackPlugin([
       {
         from: `${PATHS.src}/modules/**/**/img`, to: `${PATHS.assets}img`,
+      }, {
+        from: `${PATHS.src}/modules/**/**/audio`, to: `${PATHS.assets}audio`,
       },
     ]),
   ],

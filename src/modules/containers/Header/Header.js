@@ -11,11 +11,11 @@ class Header extends Component {
   state = {
     navQuiz: [
       { title: 'Разминка', active: true },
-      { title: 'Воробьиные', active: false },
-      { title: 'Лесные птицы', active: false },
-      { title: 'Певчие птицы', active: false },
-      { title: 'Хищные птицы', active: false },
-      { title: 'Морские птицы', active: false },
+      { title: 'Водоплавающие', active: false },
+      { title: 'Лесные', active: false },
+      { title: 'Всеядные', active: false },
+      { title: 'Хищные', active: false },
+      { title: 'Насекомоядные', active: false },
     ]
   };
 

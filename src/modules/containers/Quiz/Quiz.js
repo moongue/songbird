@@ -6,12 +6,18 @@ import Variants from '../../components/Variants/Variants';
 import VariantsStyles from '../../components/Variants/Variants.scss';
 import Styles from './Quiz.scss';
 import NavQuizStyles from '../../components/NavQuiz/NavQuiz.scss';
+import QuestionStyles from '../../components/Question/Question.scss';
 import ButtonStep from '../../components/ButtonStep/ButtonStep';
 import Congratulation from '../../components/Congratulation/Congratulation';
 import Awesome from '../../components/Awesome/Awesome';
-import AwesomeStyles from '../../components/Awesome/Awesome.scss'
+import AwesomeStyles from '../../components/Awesome/Awesome.scss';
+
+const soundCorrect = require('./audio/correct_answer.mp3');
+const soundIncorrect = require('./audio/wrong_answer.mp3');
 
 class Quiz extends Component {
+  getRandomNumIdBird = () => Math.floor(Math.random() * 6);
+
   state = {
     awesome: false,
     truthAnswer: false,
@@ -22,7 +28,7 @@ class Quiz extends Component {
     step: 0,
     buttonNextStep: false,
     indexAnswers: new Set(),
-    idBirdOnQuestion: Math.floor(Math.random() * 5),
+    idBirdOnQuestion: this.getRandomNumIdBird(),
   };
 
   changeCurrentStep = () => {
@@ -52,9 +58,13 @@ class Quiz extends Component {
         this.props.updateData(sumPoints + points);
       }
       if (index === this.state.idBirdOnQuestion) {
+        const audio = document.querySelector(`.${QuestionStyles.Question__audio}`);
+        audio.pause();
         target.classList.add(`${VariantsStyles.Variants__item_correct}`);
+        new Audio(soundCorrect).play();
       } else {
         target.classList.add(`${VariantsStyles.Variants__item_uncorrect}`);
+        new Audio(soundIncorrect).play();
       }
     }
     this.setState({
@@ -78,6 +88,7 @@ class Quiz extends Component {
       step: ++step,
       buttonNextStep: false,
       indexAnswers: new Set(),
+      idBirdOnQuestion: this.getRandomNumIdBird(),
     });
   };
 
@@ -107,7 +118,6 @@ class Quiz extends Component {
     const {
       showInf, chooseBird, truthAnswer, step, idBirdOnQuestion, buttonNextStep, sumPoints, awesome
     } = this.state;
-    console.log(idBirdOnQuestion);
     setTimeout(() => this.changeCurrentStep(), 0);
     if (step === 6) {
       return (
