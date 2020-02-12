@@ -1,0 +1,43 @@
+.NavQuiz {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 8px;
+  padding-left: 0;
+  background: #008966;
+
+  &__item {
+    display: block;
+    padding: 10px 0;
+    color: #fff;
+    text-decoration: none;
+    font-size: 17px;
+    list-style: none;
+    text-align: center;
+    flex-grow: 1;
+    &_active {
+      background: #00BC8C;
+    }
+
+    &:first-child {
+      border-radius: 8px 0 0 8px;
+    }
+
+    &:last-child {
+      border-radius: 0 8px 8px 0;
+    }
+  }
+}
+
+@media only screen and (max-width : 767px) {
+  .NavQuiz {
+    flex-direction: column;
+    &__item {
+      &:first-child {
+        border-radius: 8px 8px 0 0;
+      }
+      &:last-child {
+        border-radius: 0 0 8px 8px;
+      }
+    }
+  }
+}

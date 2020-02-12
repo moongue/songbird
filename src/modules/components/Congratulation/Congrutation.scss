@@ -1,0 +1,27 @@
+.Congratulation {
+  width: 100%;
+  padding: 20px;
+  background: #303030;
+  border-radius: 8px;
+  text-align: center;
+  color: #fff;
+  box-sizing: border-box;
+
+  h2 {
+    font-size: 30px;
+  }
+
+  button {
+    background: #008966;
+    border: 1px solid #00694e;
+    width: 100%;
+    padding: 15px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 17px;
+    cursor: pointer;
+    &:active, &:focus {
+      outline: none;
+    }
+  }
+}

@@ -1,0 +1,93 @@
+.Question {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 20px;
+  background: #303030;
+  border-radius: 8px;
+  &_small {
+    padding: 10px;
+  }
+  &__img {
+    display: flex;
+    width: 100%;
+    max-width: 200px;
+    height: 155px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+  }
+  &__name {
+    font-size: 32px;
+    color: #fff;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #444;
+    margin-top: 0;
+    &_small {
+      margin-top: 0;
+      margin-bottom: 0;
+      font-size: 20px;
+      padding-bottom: 10px;
+    }
+  }
+  &__kind {
+    padding: 0;
+  }
+  &__description {
+
+  }
+  &__audio {
+    width: 100%;
+    &:focus, &:active {
+      outline: none;
+    }
+    &::-webkit-media-controls-play-button {
+      font-size: 0;
+      height: 40px;
+      background: url(./img/play-button.svg) no-repeat center center;
+      background-size: contain;
+    }
+    &::-webkit-media-controls-panel {
+      border-radius: 8px;
+      margin: -5px;
+      background: rgba(105, 96, 38, 0.4);
+      transition: all .2s ease-in-out;
+      &:hover {
+        background: rgba(105, 96, 38, 0.2);
+      }
+    }
+    &::-webkit-media-controls-current-time-display, &::-webkit-media-controls-time-remaining-display {
+      font-family: 'Open Sans Condensed', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+    }
+    &::-webkit-media-controls-timeline {
+      padding: 0;
+      margin: 0 20px;
+      font-size: 50px;
+      background: #00BC8C;
+    }
+    &::-webkit-media-controls-enclosure {
+      border-radius: 2px;
+    }
+  }
+}
+.Right {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+@media only screen and (max-width : 767px) {
+  .Question {
+    flex-direction: column;
+  }
+  .Right {
+    width: 100%;
+  }
+}

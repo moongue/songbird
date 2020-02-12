@@ -1,0 +1,24 @@
+.Row {
+  display: flex;
+  justify-content: space-between;
+}
+.Inf {
+  box-sizing: border-box;
+  font-size: 16px;
+  padding: 10px;
+  color: #fff;
+  margin: 16px 0 16px 16px;
+  flex-basis: 50%;
+  border-radius: 8px;
+  background: #303030;
+}
+
+@media only screen and (max-width : 767px) {
+  .Row {
+    flex-direction: column;
+  }
+  .Inf {
+    margin-left: 0;
+    margin-top: 5px;
+  }
+}
